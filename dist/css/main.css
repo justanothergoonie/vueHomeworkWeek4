@@ -136,18 +136,22 @@ table {
 
 .tiles {
 	display: flex;
-	flex-direction: row;
-	width: 100%;
+	flex-wrap: wrap;
 }
 
-.tiles .tile {
+.tiles a {
 	width: 50%;
-	-o-object-fit: contain;
-	   object-fit: contain;
+	display: flex;
 }
 
-.tiles .active-tile {
-	border: solid 1px gold;
+.tiles a .tile {
+	width: 100%;
+	flex: 1;
+}
+
+.tiles a .active {
+	-webkit-filter: brightness(50%);
+	        filter: brightness(50%);
 }
 
 /*# sourceMappingURL=main.css.map */
