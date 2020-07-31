@@ -1,0 +1,13 @@
+.tiles {
+	display: flex;
+	flex-direction: row;
+	// flex-wrap: wrap;
+	width: 100%;
+	.tile {
+		width: 50%;
+		object-fit: contain;
+	}
+	.active-tile {
+		border: solid 1px gold;
+	}
+}
