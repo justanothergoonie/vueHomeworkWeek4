@@ -6,34 +6,53 @@ Vue.component('tile-holder', {
 	template: `		
     <div class="tiles">
 		<frame 
-		v-for="image in images" 
-		:image="image" 
+		v-for="tile in tileInfo"
+		:href= "tile.link"
 		@hover="selectTile" 
 		:selected-tile="selectedTile"
-		
-	></frame>
+		></frame>
     </div>
 `,
 	data() {
 		return {
-			images: [
-				'./dist/img/ToDoList_1920x1080.jpg',
-				'./dist/img/Tequila-Sunrise-Popsicles-3-748x520.jpg',
-				'./dist/img/giphy.gif',
-				'./dist/img/particle_explosion.gif',
-				'./dist/img/videoChrome.gif',
-				'./dist/img/bobsButton.gif',
-				'./dist/img/grumpy.gif',
+			tileInfo: [
+				{
+					image: './dist/img/ToDoList_1920x1080.jpg',
+					link:
+						'http://circuslabs.net/~cody.powell/circus/quarterTwo/intermediatePrograming/toDoList/',
+				},
+				{
+					image: './dist/img/Tequila-Sunrise-Popsicles-3-748x520.jpg',
+					link:
+						'http://circuslabs.net/~cody.powell/circus/quarterTwo/intermediatePrograming/popsiclePopUp/',
+				},
+				{
+					image: './dist/img/giphy.gif',
+					link:
+						'http://circuslabs.net/~cody.powell/circus/quarterOne/introToPrograming/intro-giphy-master/',
+				},
+				{
+					image: './dist/img/particle_explosion.gif',
+					link:
+						'http://circuslabs.net/~cody.powell/circus/quarterOne/introToPrograming/homeworkSix/',
+				},
+				{
+					image: './dist/img/videoChrome.gif',
+					link:
+						'http://circuslabs.net/~cody.powell/circus/quarterTwo/intermediatePrograming/programming-video-chrome-master/',
+				},
+				{
+					image: './dist/img/bobsButton.gif',
+					link:
+						'http://circuslabs.net/~cody.powell/circus/quarterOne/introToPrograming/hamburgerButton/',
+				},
+				{
+					image: './dist/img/grumpy.gif',
+					link:
+						'http://circuslabs.net/~cody.powell/circus/quarterOne/introToPrograming/iSaidLetThereBeLightbox/',
+				},
 			],
-			links: [
-				'http://circuslabs.net/~cody.powell/circus/quarterTwo/intermediatePrograming/toDoList/',
-				'http://circuslabs.net/~cody.powell/circus/quarterTwo/intermediatePrograming/popsiclePopUp/',
-				'http://circuslabs.net/~cody.powell/circus/quarterOne/introToPrograming/intro-giphy-master/',
-				'http://circuslabs.net/~cody.powell/circus/quarterOne/introToPrograming/homeworkSix/',
-				'http://circuslabs.net/~cody.powell/circus/quarterTwo/intermediatePrograming/programming-video-chrome-master/',
-				'http://circuslabs.net/~cody.powell/circus/quarterOne/introToPrograming/hamburgerButton/',
-				'http://circuslabs.net/~cody.powell/circus/quarterOne/introToPrograming/iSaidLetThereBeLightbox/',
-			],
+
 			selectedTile: null,
 		};
 	},
@@ -45,21 +64,18 @@ Vue.component('tile-holder', {
 });
 
 Vue.component('frame', {
-	props: {
-		image: String,
-		selectedTile: String,
-		link: String,
-	},
+	props: ['tileInfo'],
 	computed: {
 		isSelected() {
 			return this.image === this.selectedTile;
 		},
 	},
 	template: `
-	<a href="">
+	<a 
+	href="">
 		<img 
 		@mouseover="hover" 
-		:src="image" 
+		src="tileInfo.image" 
 		alt="" 
 		class="tile" 
 		:class="{active: isSelected}">
