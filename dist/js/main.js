@@ -2,7 +2,7 @@
 
 console.log("Hello World from main.js! \nChange this message, and make sure it changes in the browser \nto verify that you're working in the right files.");
 Vue.component('tile-holder', {
-  template: "\t\t\n    <div class=\"tiles\">\n\t\t<frame \n\t\tv-for=\"tile in tileInfo\"\n\t\t:href= \"tile.link\"\n\t\t@hover=\"selectTile\" \n\t\t:selected-tile=\"selectedTile\"\n\t\t></frame>\n    </div>\n",
+  template: "\t\t\n    <div class=\"tiles\">\n\t\t<frame \n\t\tv-for=\"tile in tileInfo\"\n\t\t:content= \"tile\"\n\t\t@hover=\"selectTile\" \n\t\t:selected-tile=\"selectedTile\"\n\t\t></frame>\n    </div>\n",
   data: function data() {
     return {
       tileInfo: [{
@@ -37,13 +37,13 @@ Vue.component('tile-holder', {
   }
 });
 Vue.component('frame', {
-  props: ['tileInfo'],
+  props: ['content'],
   computed: {
     isSelected: function isSelected() {
-      return this.image === this.selectedTile;
+      return this.content.image === this.selectedTile;
     }
   },
-  template: "\n\t<a \n\thref=\"\">\n\t\t<img \n\t\t@mouseover=\"hover\" \n\t\tsrc=\"tileInfo.image\" \n\t\talt=\"\" \n\t\tclass=\"tile\" \n\t\t:class=\"{active: isSelected}\">\n\t</a>\n    ",
+  template: "\n\t<a \n\t:href=\"content.link\">\n\t\t<img \n\t\t@mouseover=\"hover\" \n\t\t:src=\"content.image\" \n\t\talt=\"\" \n\t\tclass=\"tile\" \n\t\t:class=\"{active: isSelected}\">\n\t</a>\n    ",
   methods: {
     hover: function hover() {
       this.$emit('hover', this.image);

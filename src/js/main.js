@@ -7,7 +7,7 @@ Vue.component('tile-holder', {
     <div class="tiles">
 		<frame 
 		v-for="tile in tileInfo"
-		:href= "tile.link"
+		:content= "tile"
 		@hover="selectTile" 
 		:selected-tile="selectedTile"
 		></frame>
@@ -64,7 +64,7 @@ Vue.component('tile-holder', {
 });
 
 Vue.component('frame', {
-	props: ['tileInfo'],
+	props: ['content'],
 	computed: {
 		isSelected() {
 			return this.image === this.selectedTile;
@@ -72,10 +72,10 @@ Vue.component('frame', {
 	},
 	template: `
 	<a 
-	href="">
+	:href="content.link">
 		<img 
 		@mouseover="hover" 
-		src="tileInfo.image" 
+		:src="content.image" 
 		alt="" 
 		class="tile" 
 		:class="{active: isSelected}">
