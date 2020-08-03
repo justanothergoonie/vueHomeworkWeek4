@@ -2,16 +2,22 @@
 	display: flex;
 	flex-wrap: wrap;
 	a {
+		justify-content: center;
 		width: 50%;
 		display: flex;
-
+		font-size: 3.5rem;
+		text-decoration: none;
+		color: white;
 		.tile {
-			// padding: 10px;
 			width: 100%;
 			flex: 1;
+			position: relative;
 		}
 		.active {
 			filter: brightness(50%);
+		}
+		.title {
+			position: absolute;
 		}
 	}
 }

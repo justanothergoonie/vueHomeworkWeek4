@@ -140,18 +140,27 @@ table {
 }
 
 .tiles a {
+	justify-content: center;
 	width: 50%;
 	display: flex;
+	font-size: 3.5rem;
+	text-decoration: none;
+	color: white;
 }
 
 .tiles a .tile {
 	width: 100%;
 	flex: 1;
+	position: relative;
 }
 
 .tiles a .active {
 	-webkit-filter: brightness(50%);
 	        filter: brightness(50%);
+}
+
+.tiles a .title {
+	position: absolute;
 }
 
 /*# sourceMappingURL=main.css.map */
